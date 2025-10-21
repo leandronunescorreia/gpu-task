@@ -55,15 +55,26 @@ make
 
 ## Usage
 
-### Running the Example
+### Running the Examples
 
-After building, run the vector addition example:
+After building, you can check if GPU functionality is available:
+
+```bash
+./device_info
+```
+
+If OpenCL is available, run the computation examples:
 
 ```bash
 ./vector_add
+./scalar_multiply
 ```
 
-This will perform element-wise addition of two 1024-element vectors on the GPU.
+- `device_info`: Shows GPU device information and installation status
+- `vector_add`: Performs element-wise addition of two 1024-element vectors on GPU
+- `scalar_multiply`: Demonstrates multiplying a vector by a scalar value on GPU
+
+**Note:** All examples require OpenCL to be properly installed and a compatible GPU device.
 
 ### API Example
 

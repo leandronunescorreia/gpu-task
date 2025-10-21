@@ -34,8 +34,24 @@ if(OpenCL_FOUND)
     target_link_libraries(vector_add ${OpenCL_LIBRARIES})
 endif()
 
+# Additional example
+add_executable(scalar_multiply examples/scalar_multiply.cpp)
+target_link_libraries(scalar_multiply gputask)
+
+if(OpenCL_FOUND)
+    target_link_libraries(scalar_multiply ${OpenCL_LIBRARIES})
+endif()
+
+# Device info utility
+add_executable(device_info examples/device_info.cpp)
+target_link_libraries(device_info gputask)
+
+if(OpenCL_FOUND)
+    target_link_libraries(device_info ${OpenCL_LIBRARIES})
+endif()
+
 # Installation rules
-install(TARGETS gputask vector_add
+install(TARGETS gputask vector_add scalar_multiply device_info
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
