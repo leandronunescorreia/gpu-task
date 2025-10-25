@@ -1,7 +1,6 @@
 add_executable(vector_add main.cpp)
 
-target_include_directories(vector_add PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-)
-
 target_link_libraries(vector_add PRIVATE webgpu_compute)
+
+configure_file(vec-add.wglsl ${CMAKE_CURRENT_BINARY_DIR}/vec-add.wglsl COPYONLY)
+

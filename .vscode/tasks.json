@@ -8,25 +8,68 @@
       "problemMatcher": []
     },
     {
-      "label": "CMake: Configure Debug",
+      "label": "config debug dawn samples-off",
       "type": "shell",
       "command": "cmake",
       "args": [
         "-B", "build",
         "-DCMAKE_BUILD_TYPE=Debug",
         "-DWEBGPU_BACKEND=DAWN",
-        "-DWEBGPU_BUILD_FROM_SOURCE=OFF"
+        "-DWEBGPU_BUILD_FROM_SOURCE=OFF",
+        "-DBUILD_SAMPLES=OFF"
       ],
       "group": "build",
       "problemMatcher": ["$gcc"]
     },
     {
-      "label": "Build App Target (Debug)",
+      "label": "config debug dawn samples-on",
       "type": "shell",
       "command": "cmake",
       "args": [
-        "--build", "build-dawn",
-        "--target", "App"
+        "-B", "build",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DWEBGPU_BACKEND=DAWN",
+        "-DWEBGPU_BUILD_FROM_SOURCE=OFF",
+        "-DBUILD_SAMPLES=ON"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build -t webgpu_compute (Debug)",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build", "build",
+        "--target", "webgpu_compute",
+        "--",
+        "-j$(nproc)"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+
+    {
+      "label": "Install lib webgpu_compute",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--install", "build"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "build 01-vector-add",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "build",
+        "--target",
+        "vector_add",
+        "--",
+        "-j$(nproc)"
       ],
       "group": "build",
       "problemMatcher": ["$gcc"]

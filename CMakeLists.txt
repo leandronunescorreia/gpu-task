@@ -4,6 +4,9 @@ project(webgpu-compute LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}" CACHE PATH "Install path" FORCE)
+
 include(FetchContent)
 
 # === Fetch precompiled WebGPU (Dawn distribution) ===
