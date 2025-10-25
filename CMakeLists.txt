@@ -25,3 +25,8 @@ option(BUILD_SAMPLES "Build sample binaries" ON)
 if(BUILD_SAMPLES)
   add_subdirectory(samples)
 endif()
+
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+  add_subdirectory(test)
+endif()
