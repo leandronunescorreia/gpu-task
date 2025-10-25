@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+          "${workspaceFolder}/**",
+          "${workspaceFolder}/include/**",
+          // "${workspaceFolder}/webgpu/dawn/include",
+          // "${workspaceFolder}/webgpu/emdawnwebgpu/include",
+          // "${workspaceFolder}/webgpu/emscripten/include",
+          "${workspaceFolder}/build/_deps/dawn-7187-linux-x64-release-src/include/**"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/g++",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-x64"
+    }
+  ],
+  "version": 4
+}
