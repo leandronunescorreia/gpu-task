@@ -38,7 +38,7 @@ cmake --install build
 
 ### config build for tests
 ```bash
- cmake -S . -B build -DBUILD_TESTS=ON -DWEBGPU_BACKEND=DAWN -DWEBGPU_BUILD_FROM_SOURCE=OFF -DBUILD_SAMPLES=OFF
+cmake -S . -B build -DBUILD_TESTS=ON -DWEBGPU_BACKEND=DAWN -DWEBGPU_BUILD_FROM_SOURCE=OFF -DBUILD_SAMPLES=OFF
 ```
 
 ### build test

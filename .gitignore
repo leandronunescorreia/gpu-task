@@ -49,3 +49,4 @@ webgpu/
 
 # Ignore install directory and all its contents
 install/
+third-party/

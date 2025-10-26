@@ -16,7 +16,8 @@
         "-DCMAKE_BUILD_TYPE=Debug",
         "-DWEBGPU_BACKEND=DAWN",
         "-DWEBGPU_BUILD_FROM_SOURCE=OFF",
-        "-DBUILD_SAMPLES=OFF"
+        "-DBUILD_SAMPLES=OFF",
+        "-DBUILD_TESTS=OFF"
       ],
       "group": "build",
       "problemMatcher": ["$gcc"]
@@ -30,7 +31,8 @@
         "-DCMAKE_BUILD_TYPE=Debug",
         "-DWEBGPU_BACKEND=DAWN",
         "-DWEBGPU_BUILD_FROM_SOURCE=OFF",
-        "-DBUILD_SAMPLES=ON"
+        "-DBUILD_SAMPLES=ON",
+        "-DBUILD_TESTS=OFF"
       ],
       "group": "build",
       "problemMatcher": ["$gcc"]
