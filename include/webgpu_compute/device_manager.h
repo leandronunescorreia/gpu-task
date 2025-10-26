@@ -12,6 +12,7 @@ public:
 
     WGPUInstance getInstance() const { return m_instance; }
     WGPUDevice getDevice() const { return m_device; }
+    WGPULimits getLimits() const { return m_limits; }
 
 private:
     WGPUInstance m_instance = nullptr;
