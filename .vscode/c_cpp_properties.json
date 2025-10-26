@@ -8,6 +8,7 @@
           // "${workspaceFolder}/webgpu/dawn/include",
           // "${workspaceFolder}/webgpu/emdawnwebgpu/include",
           // "${workspaceFolder}/webgpu/emscripten/include",
+         "${workspaceFolder}/build/_deps/googletest-src/googletest/include/**",
           "${workspaceFolder}/build/_deps/dawn-7187-linux-x64-release-src/include/**"
       ],
       "defines": [],
