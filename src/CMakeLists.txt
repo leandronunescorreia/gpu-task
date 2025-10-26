@@ -4,6 +4,10 @@ add_library(webgpu_compute STATIC
     compute_engine.cpp
 )
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(webgpu_compute PRIVATE DEBUG_BUILD _DEBUG)
+endif()
+
 target_include_directories(webgpu_compute
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>   # during build
