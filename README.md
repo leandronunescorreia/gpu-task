@@ -1,5 +1,19 @@
-# gpu-task
+# gpu-task --- WIP ---
 cross-platform gpu computation engine
+
+A small, cross-platform GPU compute engine and sample collection for prototyping and
+benchmarking compute kernels using WebGPU-compatible backends. The project provides
+clean C++ wrappers and buildable samples so you can quickly test GPU compute
+workloads on Windows, Linux and macOS.
+
+Key features:
+
+- Lightweight, header/source C++ implementation with a focus on compute workflows.
+- Sample programs (e.g., vector addition) and simple build configuration via CMake.
+- Supports WebGPU backends (Dawn / wgpu-native) to keep parity across platforms.
+- Test targets included to help validate device and buffer management.
+
+See the sections below for build, install and test commands.
 
 
 # initial cmake config command
