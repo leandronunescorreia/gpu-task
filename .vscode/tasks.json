@@ -32,7 +32,7 @@
         "-DWEBGPU_BACKEND=DAWN",
         "-DWEBGPU_BUILD_FROM_SOURCE=OFF",
         "-DBUILD_SAMPLES=ON",
-        "-DBUILD_TESTS=OFF"
+        "-DBUILD_TESTS=ON"
       ],
       "group": "build",
       "problemMatcher": ["$gcc"]

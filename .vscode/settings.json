@@ -78,6 +78,9 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "charconv": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "any": "cpp",
+        "condition_variable": "cpp",
+        "forward_list": "cpp"
     }
 }
