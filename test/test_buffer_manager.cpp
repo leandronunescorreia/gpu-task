@@ -1,19 +1,22 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include "webgpu_compute/device_manager.h"
 #include "webgpu_compute/buffer_manager.h"
 
+using ::testing::NotNull;
 
 TEST(BufferManagerTest, CREATE_WRITEONLY_BUFFER) {
     DeviceManager deviceManager = DeviceManager();
-    EXPECT_NE(deviceManager, nullptr);
+    // DeviceManager is a value type (not a pointer). We'll validate
+    // functionality by checking the returned WebGPU handles below.
 
-    auto instance = deviceManager.getInstance();
+    WGPUInstance instance = deviceManager.getInstance();
     EXPECT_NE(instance, nullptr);
 
-    auto adapter = deviceManager.createAdapter(instance);
+    WGPUAdapter adapter = deviceManager.createAdapter(instance);
     EXPECT_NE(adapter, nullptr);
 
-    auto device = deviceManager.createDevice(adapter);
+    WGPUDevice device = deviceManager.createDevice(adapter);
     EXPECT_NE(device, nullptr);
 
 
@@ -21,9 +24,9 @@ TEST(BufferManagerTest, CREATE_WRITEONLY_BUFFER) {
     WGPUBuffer storageBuffer = BufferManager::createStorageBuffer(device, bufferSize, false);
     EXPECT_NE(storageBuffer, nullptr);
 
-    auto usage = wgpuBufferGetUsage(storageBuffer);
+    WGPUBufferUsage usage = wgpuBufferGetUsage(storageBuffer);
 
-    auto expected = (WGPUBufferUsage)(WGPUBufferUsage_Storage | WGPUBufferUsage_CopyDst);
+    WGPUBufferUsage expected = (WGPUBufferUsage)(WGPUBufferUsage_Storage | WGPUBufferUsage_CopyDst);
     EXPECT_EQ(usage & expected, expected);
 
     wgpuBufferDestroy(storageBuffer);
