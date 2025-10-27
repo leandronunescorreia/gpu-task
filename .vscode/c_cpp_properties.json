@@ -3,13 +3,13 @@
     {
       "name": "Linux",
       "includePath": [
-          "${workspaceFolder}/**",
-          "${workspaceFolder}/include/**",
-          // "${workspaceFolder}/webgpu/dawn/include",
-          // "${workspaceFolder}/webgpu/emdawnwebgpu/include",
-          // "${workspaceFolder}/webgpu/emscripten/include",
-         "${workspaceFolder}/build/_deps/googletest-src/googletest/include/**",
-          "${workspaceFolder}/build/_deps/dawn-7187-linux-x64-release-src/include/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/include/**",
+        // "${workspaceFolder}/webgpu/dawn/include",
+        // "${workspaceFolder}/webgpu/emdawnwebgpu/include",
+        "${workspaceFolder}/build/include/**",
+        "${workspaceFolder}/build/_deps/googletest-src/googletest/include/**",
+        "${workspaceFolder}/build/_deps/dawn-7187-linux-x64-release-src/include/**"
       ],
       "defines": [],
       "compilerPath": "/usr/bin/g++",

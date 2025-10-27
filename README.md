@@ -60,7 +60,23 @@ cmake -S . -B build -DBUILD_TESTS=ON -DWEBGPU_BACKEND=DAWN -DWEBGPU_BUILD_FROM_S
 cmake --build build --target test_device_manager
 ```
 
+### build all tests
+```bash
+cmake --build build --target test_device_manager test_buffer_manager -- -j$(nproc)
+```
+
+### run the test agregator
+```bash
+cmake --build build --target build_tests -- -j$(nproc)
+```
+
 ### run tests
 ```bash
-./build/test/test_device_manager 
+./build/test/test_device_manager && ./build/test/test_buffer_manager
+```
+
+
+### build all
+```bash
+cmake --build build -- -j$(nproc)
 ```
