@@ -9,19 +9,23 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(googletest)
 
-
 enable_testing()
 include(GoogleTest)
 
 
 add_executable(test_device_manager test_device_manager.cpp)
-
 target_link_libraries(test_device_manager
   PRIVATE
     webgpu_compute
     GTest::gtest_main
 )
-
-
-# === Discover tests ===
 gtest_discover_tests(test_device_manager)
+
+
+add_executable(test_buffer_manager test_buffer_manager.cpp)
+target_link_libraries(test_buffer_manager
+  PRIVATE
+    webgpu_compute
+    GTest::gtest_main
+)
+gtest_discover_tests(test_buffer_manager)
