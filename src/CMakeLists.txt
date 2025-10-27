@@ -22,27 +22,33 @@ target_link_libraries(webgpu_compute
         webgpu
 )
 
-# === Installation rules ===
-install(TARGETS webgpu_compute
-    EXPORT webgpu_computeTargets
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
-)
+## === Installation rules ===
+# Skip installation/export when building tests in-source to avoid export
+# dependency checks against external/prebuilt WebGPU targets which may
+# not be part of an export set. Installing is primarily needed for
+# packaging/use-after-install scenarios, not for running tests.
+if (NOT BUILD_TESTS)
+    install(TARGETS webgpu_compute
+        EXPORT webgpu_computeTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include
+    )
 
-# === Install public headers ===
-# This keeps your folder structure include/webgpu_compute/*.h intact
-install(
-    DIRECTORY ${CMAKE_SOURCE_DIR}/include/webgpu_compute/
-    DESTINATION include/webgpu_compute
-    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
-)
+    # === Install public headers ===
+    # This keeps your folder structure include/webgpu_compute/*.h intact
+    install(
+        DIRECTORY ${CMAKE_SOURCE_DIR}/include/webgpu_compute/
+        DESTINATION include/webgpu_compute
+        FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+    )
 
-# === Export CMake package config ===
-install(
-    EXPORT webgpu_computeTargets
-    FILE webgpu_computeTargets.cmake
-    NAMESPACE webgpu_compute::
-    DESTINATION lib/cmake/webgpu_compute
-)
+    # === Export CMake package config ===
+    install(
+        EXPORT webgpu_computeTargets
+        FILE webgpu_computeTargets.cmake
+        NAMESPACE webgpu_compute::
+        DESTINATION lib/cmake/webgpu_compute
+    )
+endif()
