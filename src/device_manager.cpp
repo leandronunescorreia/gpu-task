@@ -163,45 +163,45 @@ WGPULimits DeviceManager::queryDeviceLimits(WGPUDevice device) {
 	}
 	std::cout << std::dec;
 
-	WGPULimits limits = {};
-	limits.nextInChain = nullptr;
-    
+	this->m_limits = {};
+	this->m_limits.nextInChain = nullptr;
+
     WGPUStatus status = WGPUStatus_Error;
 #ifdef WEBGPU_BACKEND_DAWN
-	status = wgpuDeviceGetLimits(device, &limits);
+	status = wgpuDeviceGetLimits(device, &this->m_limits);
 #else
-	status = wgpuDeviceGetLimits(device, &limits);
+	status = wgpuDeviceGetLimits(device, &this->m_limits);
 #endif
 	
 	if (status == WGPUStatus_Success) {
 		std::cout << "Device limits:" << std::endl;
-		std::cout << " - maxTextureDimension1D: " << limits.maxTextureDimension1D << std::endl;
-		std::cout << " - maxTextureDimension2D: " << limits.maxTextureDimension2D << std::endl;
-		std::cout << " - maxTextureDimension3D: " << limits.maxTextureDimension3D << std::endl;
-		std::cout << " - maxTextureArrayLayers: " << limits.maxTextureArrayLayers << std::endl;
-		std::cout << " - maxBindGroups: " << limits.maxBindGroups << std::endl;
-		std::cout << " - maxDynamicUniformBuffersPerPipelineLayout: " << limits.maxDynamicUniformBuffersPerPipelineLayout << std::endl;
-		std::cout << " - maxDynamicStorageBuffersPerPipelineLayout: " << limits.maxDynamicStorageBuffersPerPipelineLayout << std::endl;
-		std::cout << " - maxSampledTexturesPerShaderStage: " << limits.maxSampledTexturesPerShaderStage << std::endl;
-		std::cout << " - maxSamplersPerShaderStage: " << limits.maxSamplersPerShaderStage << std::endl;
-		std::cout << " - maxStorageBuffersPerShaderStage: " << limits.maxStorageBuffersPerShaderStage << std::endl;
-		std::cout << " - maxStorageTexturesPerShaderStage: " << limits.maxStorageTexturesPerShaderStage << std::endl;
-		std::cout << " - maxUniformBuffersPerShaderStage: " << limits.maxUniformBuffersPerShaderStage << std::endl;
-		std::cout << " - maxUniformBufferBindingSize: " << limits.maxUniformBufferBindingSize << std::endl;
-		std::cout << " - maxStorageBufferBindingSize: " << limits.maxStorageBufferBindingSize << std::endl;
-		std::cout << " - minUniformBufferOffsetAlignment: " << limits.minUniformBufferOffsetAlignment << std::endl;
-		std::cout << " - minStorageBufferOffsetAlignment: " << limits.minStorageBufferOffsetAlignment << std::endl;
-		std::cout << " - maxVertexBuffers: " << limits.maxVertexBuffers << std::endl;
-		std::cout << " - maxVertexAttributes: " << limits.maxVertexAttributes << std::endl;
-		std::cout << " - maxVertexBufferArrayStride: " << limits.maxVertexBufferArrayStride << std::endl;
-		std::cout << " - maxInterStageShaderComponents: " << limits.maxInterStageShaderVariables << std::endl;
-		std::cout << " - maxComputeWorkgroupStorageSize: " << limits.maxComputeWorkgroupStorageSize << std::endl;
-		std::cout << " - maxComputeInvocationsPerWorkgroup: " << limits.maxComputeInvocationsPerWorkgroup << std::endl;
-		std::cout << " - maxComputeWorkgroupSizeX: " << limits.maxComputeWorkgroupSizeX << std::endl;
-		std::cout << " - maxComputeWorkgroupSizeY: " << limits.maxComputeWorkgroupSizeY << std::endl;
-		std::cout << " - maxComputeWorkgroupSizeZ: " << limits.maxComputeWorkgroupSizeZ << std::endl;
-		std::cout << " - maxComputeWorkgroupsPerDimension: " << limits.maxComputeWorkgroupsPerDimension << std::endl;
+		std::cout << " - maxTextureDimension1D: " << this->m_limits.maxTextureDimension1D << std::endl;
+		std::cout << " - maxTextureDimension2D: " << this->m_limits.maxTextureDimension2D << std::endl;
+		std::cout << " - maxTextureDimension3D: " << this->m_limits.maxTextureDimension3D << std::endl;
+		std::cout << " - maxTextureArrayLayers: " << this->m_limits.maxTextureArrayLayers << std::endl;
+		std::cout << " - maxBindGroups: " << this->m_limits.maxBindGroups << std::endl;
+		std::cout << " - maxDynamicUniformBuffersPerPipelineLayout: " << this->m_limits.maxDynamicUniformBuffersPerPipelineLayout << std::endl;
+		std::cout << " - maxDynamicStorageBuffersPerPipelineLayout: " << this->m_limits.maxDynamicStorageBuffersPerPipelineLayout << std::endl;
+		std::cout << " - maxSampledTexturesPerShaderStage: " << this->m_limits.maxSampledTexturesPerShaderStage << std::endl;
+		std::cout << " - maxSamplersPerShaderStage: " << this->m_limits.maxSamplersPerShaderStage << std::endl;
+		std::cout << " - maxStorageBuffersPerShaderStage: " << this->m_limits.maxStorageBuffersPerShaderStage << std::endl;
+		std::cout << " - maxStorageTexturesPerShaderStage: " << this->m_limits.maxStorageTexturesPerShaderStage << std::endl;
+		std::cout << " - maxUniformBuffersPerShaderStage: " << this->m_limits.maxUniformBuffersPerShaderStage << std::endl;
+		std::cout << " - maxUniformBufferBindingSize: " << this->m_limits.maxUniformBufferBindingSize << std::endl;
+		std::cout << " - maxStorageBufferBindingSize: " << this->m_limits.maxStorageBufferBindingSize << std::endl;
+		std::cout << " - minUniformBufferOffsetAlignment: " << this->m_limits.minUniformBufferOffsetAlignment << std::endl;
+		std::cout << " - minStorageBufferOffsetAlignment: " << this->m_limits.minStorageBufferOffsetAlignment << std::endl;
+		std::cout << " - maxVertexBuffers: " << this->m_limits.maxVertexBuffers << std::endl;
+		std::cout << " - maxVertexAttributes: " << this->m_limits.maxVertexAttributes << std::endl;
+		std::cout << " - maxVertexBufferArrayStride: " << this->m_limits.maxVertexBufferArrayStride << std::endl;
+		std::cout << " - maxInterStageShaderComponents: " << this->m_limits.maxInterStageShaderVariables << std::endl;
+		std::cout << " - maxComputeWorkgroupStorageSize: " << this->m_limits.maxComputeWorkgroupStorageSize << std::endl;
+		std::cout << " - maxComputeInvocationsPerWorkgroup: " << this->m_limits.maxComputeInvocationsPerWorkgroup << std::endl;
+		std::cout << " - maxComputeWorkgroupSizeX: " << this->m_limits.maxComputeWorkgroupSizeX << std::endl;
+		std::cout << " - maxComputeWorkgroupSizeY: " << this->m_limits.maxComputeWorkgroupSizeY << std::endl;
+		std::cout << " - maxComputeWorkgroupSizeZ: " << this->m_limits.maxComputeWorkgroupSizeZ << std::endl;
+		std::cout << " - maxComputeWorkgroupsPerDimension: " << this->m_limits.maxComputeWorkgroupsPerDimension << std::endl;
 	}
 
-    return limits;
+    return this->m_limits;
 }

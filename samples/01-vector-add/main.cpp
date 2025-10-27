@@ -2,21 +2,31 @@
 #include <iostream>
 #include <vector>
 
-int main() {
+int main()
+{
     DeviceManager dm;
     auto adapter = dm.createAdapter(dm.getInstance());
     auto device = dm.createDevice(adapter);
-    dm.queryDeviceLimits(device);
+    auto limits = dm.queryDeviceLimits(device);
+
+    auto inputBuffer = BufferManager::createStorageBuffer(device, 1024 * sizeof(float), true);
+    auto outputBuffer = BufferManager::createStorageBuffer(device, 1024 * sizeof(float), false);
 
     ComputeEngine engine(device);
-    engine.initPipeline("samples/01-vector-add/vec-add.wgsl");
+    auto vectorAddPipeline = engine.initPipeline("samples/01-vector-add/vec-add.wgsl",
+                                                 {inputBuffer}, {outputBuffer}, 1024 * sizeof(float));
+
+    auto effectStore = ComputeEffectStore();
+    effectStore.addEffect("vectorAdd", std::make_unique<ComputeEffect>(vectorAddPipeline));
 
     std::vector<float> input(1024);
     for (size_t i = 0; i < input.size(); ++i)
         input[i] = float(i + 1);
 
     std::vector<float> output;
-    engine.run(input, output);
+    auto fx = effectStore.get("vectorAdd");
+
+    engine.run({inputBuffer}, {outputBuffer}, {*fx});
 
     for (size_t i = 0; i < 10; ++i)
         std::cout << input[i] << " → " << output[i] << std::endl;
